@@ -1,0 +1,80 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.db
+*.sqlite3
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+*.lock
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# VS Code
+.vscode/
+.settings/
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.env
+.venv/
+venv/
+env/
+ENV/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# MyPy
+.mypy_cache/
+
+# Coverage
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Pytest
+pytest_cache/
+
+# Data files
+*.csv
+*.dat
+*.db
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Folders
+crystallm/crystallm_v1_small/
+generated_cifs/
+processed_cifs/
+continuum_simulation_results/
+md_simulation_results/
+thermo_calc_files
+crystallm_cifs/
+materials_project_data/
+matweb_data/
+eam_files/
