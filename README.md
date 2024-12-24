@@ -11,7 +11,7 @@ At its core, the framework utilizes OpenAI's GPT-3.5-turbo, enhanced with custom
 - Crystal structure generation using the CrystaLLM model.
 - Molecular dynamics simulations using the Atomic Simulation Environment (ASE).
 
-![Framework](image.png)  
+![Framework](images/figure_3-transformed.png)  
 
 ## Getting Started 
 Create a virtual environment  
