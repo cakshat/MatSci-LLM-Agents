@@ -245,6 +245,8 @@ matweb_property_fields = [
 def get_material_ids(compound: "str") -> list:
     """
     Returns a list of material_ids which can be used for extraction from materials project as needed.
+    Compound is the chemical formula of the compound so make sure to use the chemcial formula and not word description,
+    For e.g. if user asks for "sodium chloride" your input should be "NaCl".
     """
     mpr = MPRester(MP_API)
     with MPRester(MP_API, mute_progress_bars=True) as mpr:
