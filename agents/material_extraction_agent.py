@@ -70,10 +70,12 @@ class MaterialExtractionAgent:
             Based on your classification, proceed with the appropriate action:
             - If it's Type 1 (Finding materials based on properties), explain the tool you are using (e.g., searching for materials based on physical properties), what parameters you are using, and why you chose those parameters. Then, execute the appropriate action to search for materials.
             - If it's Type 2 (Getting properties of a specific material), first find the material_id(s) for the material, then explain the tool you are using (e.g., fetching material properties), the parameters, and the reasoning behind those choices. Then, execute the appropriate action to retrieve the properties of the specific material.
+            When using get_material_ids() tool: Compound is the chemical formula of the compound so make sure to use the chemcial formula and not word description,
+    For e.g. if user asks for "sodium chloride" your input should be "NaCl".
             
             DO NOT MAKE YOUR OWN DATA UP. If Materials Project does not return any results, state that and ask for more information.
             After running the extraction from materials project, if the problem is type 1, extract from matweb as well if the property is
-            relevant to the agent
+            relevant to the agent. Run one or multiple appropiate tools based on user prompt.
             """
         )
 
