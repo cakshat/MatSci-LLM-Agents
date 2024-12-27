@@ -90,45 +90,13 @@ These materials exhibit a range of elastic properties and can be further analyze
 The framework consists of the following agents:  
 
 ### Material Extraction Agent  
-The Material Extraction Agent is designed to bridge the gap between theoretical models and practical 
-applications in materials science. By integrating structured computational resources like the Materials 
-Project (MP) and experimental databases such as MatWeb, it provides a robust framework for material 
-discovery and analysis. The MP offers access to over 150,000 known and predicted materials, with detailed 
-properties like elasticity, phonons, and thermodynamics, while MatWeb serves as a repository for experimentally 
-validated material properties, ensuring direct comparisons between predicted and real-world behaviors. 
-This integration addresses a key challenge in materials science, as traditional large language models
- often lack the domain-specific knowledge required for interpreting highly specialized datasets. 
- The Material Extraction Agent mitigates this by embedding dynamic querying mechanisms to access real-time data,
-  ensuring responses grounded in authoritative, up-to-date information.  
+Integrates computational resources like the Materials Project and MatWeb for material discovery and analysis, providing real-time, authoritative data on properties like elasticity, phonons, and thermodynamics. Bridges the gap between theoretical models and experimental datasets, addressing the domain-specific limitations of traditional LLMs.  
 
 ### Continuum Simulation Agent  
-The Continuum Simulation Agent is designed to execute advanced materials science simulations, integrating two 
-powerful modeling techniques: Cellular Automata (CA) and Monte Carlo Annealing (MCA). By utilizing CA, the agent 
-simulates phase transformations such as solidification and recrystallization on a 2D grid, iteratively updating 
-the grid based on local neighborhood conditions. This approach provides valuable insights into grain growth, 
-nucleation behaviors, and the kinetics of phase changes in both single-phase and multiphase systems. MCA, particularly 
-with the Potts model, is used to analyze microstructural evolution during annealing. It simulates grain structure 
-evolution under thermal processing conditions, applying biasing strategies to model interface and bulk site behaviors, 
-and offering predictive insights into grain boundary dynamics and energy minimization. By combining real-time computational modeling with natural language processing, the Continuum Simulation 
-Agent provides actionable simulation results and enables seamless interaction, parameter customization, and visualization, 
-bridging the gap between theoretical insights and practical applications in materials design and manufacturing.  
+Executes advanced simulations using Cellular Automata for phase transformations and Monte Carlo Annealing for microstructural evolution. Provides insights into grain growth, nucleation, and phase kinetics, offering actionable results and visualization for materials design.  
 
 ### Crystal Generation Agent  
-The Crystal Generator Agent leverages the CrystaLLM model, a transformer-based architecture specifically optimized 
-for materials science, to generate crystal structures based on elemental compositions or alloy systems. Trained on a 
-large dataset of known crystal structures and material properties, CrystaLLM predicts stable or plausible crystal structures, 
-including lattice parameters, atomic positions, and symmetry information. This capability facilitates advanced materials 
-design, such as alloys, superconductors, or energy storage solutions, by generating multiple plausible structures for a given 
-composition. Unlike general-purpose LLMs, CrystaLLM captures complex crystallographic patterns, enabling the generation of 
-physically meaningful structures. Integrated within a multi-agent system, the Crystal Generator Agent enhances material
- discovery workflows by producing results that can seamlessly be passed on for further processing, including evaluations of
-  thermodynamic stability, material properties, or molecular dynamics simulations.  
+Uses the CrystaLLM model to generate plausible crystal structures based on compositions or alloy systems. Captures crystallographic patterns to predict lattice parameters, atomic positions, and symmetry, enhancing workflows for materials design and stability evaluations.  
 
 ### Molecular Dynamics Agent  
-The Molecular Dynamics (MD) Simulation Agent is a powerful computational tool designed to simulate atomic-scale phenomena, 
-leveraging the Atomic Simulation Environment (ASE) package for structure initialization, interatomic potential definition, 
-and simulation execution. Supporting various crystal symmetries and interatomic potentials like the Embedded Atom Method (EAM), 
-Lennard-Jones (LJ), and Effective Medium Theory (EMT), the agent allows simulations of metals, alloys, and simple systems. 
-It can simulate under different conditions, including NVE (constant energy), NVT (constant temperature), and NPT (constant pressure), 
-enabling users to investigate thermodynamic properties under controlled settings. This versatility makes the MD Simulation Agent 
-essential for studying material behaviors such as thermal conductivity, mechanical strength, and phase transitions at the atomic level.  Integrated within a large language model framework, the agent enhances usability by enabling interactive, natural language-based queries, configuration, and analysis of simulations. Unlike traditional MD tools, this agent automates the entire simulation workflow, from initialization to visualization, providing actionable insights and detailed outputs, such as energy plots and trajectory data, making it an indispensable tool for materials science research and engineering.
+Simulates atomic-scale phenomena using tools like ASE, supporting various interatomic potentials and conditions (NVE, NVT, NPT). Automates workflows from initialization to visualization, enabling natural language-based queries for studying thermodynamic and mechanical properties of materials.  
