@@ -60,6 +60,22 @@ OPENAI_API = os.getenv("OPENAI_API")
 MP_API = os.getenv("MP_API")
 ################
 
+# Monkey-patch the method to fix the new bug
+from mp_api.client.core.client import BaseRester
+import re
+from datetime import datetime
+
+def _patched_get_database_version(endpoint):
+    import requests
+    date_str = requests.get(url=endpoint + "heartbeat").json()["db_version"]
+    clean_str = re.sub(r"\.post\d+", "", date_str)  # remove .postX
+    date_obj = datetime.strptime(clean_str, "%Y.%m.%d")
+    return date_obj.strftime("%Y.%m.%d")
+
+BaseRester._get_database_version = staticmethod(_patched_get_database_version)
+# Monkey-patch the method to fix new bug
+
+
 def count_tokens(text: str, model: str = "gpt-3.5-turbo") -> int:
     encoding = tiktoken.get_encoding("cl100k_base" if model == "gpt-3.5-turbo" else "p50k_base")
     tokens = encoding.encode(text)
