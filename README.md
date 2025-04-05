@@ -46,39 +46,55 @@ MP_API
 For using the agent, import the necessary agent and invoke it with your prompt. For example:    
 
 ```bash
->>> from agents.material_extraction_agent import MaterialExtractionAgent
->>> mea = MaterialExtractionAgent()
->>> mea.invoke("Retrieve materials with Poisson's ratios ranging from 0.2 to 0.35, list their poissons ratios along with other elastic properties")  
+>>> from agents import MatSciAgent
+>>> mat_sci_agent = MatSciAgent()
+>>> prompt = "Retrieve bond length and coordination information for TiO2. List your results."
+>>> mat_sci_agent.invoke(prompt)
 ```
 
 Responses will be generated based on the prompt and the agent's capabilities.
  ```bash
+LLM Agent Selector Response:
+I would recommend using the MaterialExtractionAgent with the MPBondsTool to retrieve bond length and coordination information for TiO2. This tool is specifically designed to extract bond-related properties from materials data.
+
+MaterialExtractionAgent - MPBondsTool
+Selected agent: MaterialExtractionAgent
+
+
 > Entering new AgentExecutor chain...
-Invoking: `MaterialsProjectElasticity` with `{'poisson_ratio': [0.2, 0.35], ...
+
+Invoking: `get_material_ids` with `{'compound': 'TiO2'}`
+responded: This query falls under Type 2, which involves getting properties of a specific material. The specified material is TiO2. To proceed, I will first need to find the material_id(s) for TiO2 by using the chemical formula. Let's start by retrieving the material_id(s) for TiO2.
 ...
-The search for materials with Poisson's ratios ranging from 0.2 to 0.35 has provided several materials with their elastic properties. Here are some of the materials found along with their elastic properties:
+Invoking: `MaterialsProjectBonds` with `{'material_ids': ['mp-390', 'mp-430', ...
 
-1. Silicon (Si):
-   - Poisson's Ratio: 0.318
-   - Bulk Modulus: 67.85 GPa
-   - Shear Modulus: 28.05 GPa
-   - Anisotropy: 2.66
+The material studied in this analysis is a compound composed of oxygen (O) and titanium (Ti) atoms, with the chemical formula TiO2. The crystal structure is monoclinic with a volume of 274.62 Å³ and a density of 1.93 g/cm³. The coordination environments observed include various interactions between Ti and O atoms characterized as O2--Ti4+ and Ti4+-O2-. The bonding lengths range from 1.63 Å to 1.99 Å, with an average of 1.87 Å. The material exhibits coordination ... 
 
-2. Oxygen (O₂):
-   - Poisson's Ratio: 0.318
-   - Bulk Modulus: 1.74 GPa
-   - Shear Modulus: 1.04 GPa
-   - Anisotropy: -17.18
+The analysis of TiO2 has provided detailed information on its bonding properties, coordination environments, and crystal structure. Here are some key findings for TiO2:
+
+1. **Material ID: mp-572822**
+   - Crystal Structure: Monoclinic
+   - Volume: 274.62 Å³
+   - Density: 1.93 g/cm³
+   - Coordination Environments: O2--Ti4+, Ti4+-O2-
+   - Bond Lengths: Range from 1.63 Å to 1.99 Å
+
+2. **Material ID: mp-636827**
+   - Crystal Structure: Orthorhombic
+   - Volume: 189.27 Å³
+   - Density: 1.40 g/cm³
+   - Coordination Environments: O2--Ti4+, Ti4+-O2-
 
 ...
 
-5. Carbon (C):
-   - Poisson's Ratio: 0.31
-   - Bulk Modulus: 45.5 GPa
-   - Shear Modulus: 30.7 GPa
-   - Anisotropy: -3.046
+5. **Material ID: mp-754769**
+   - Crystal Structure: Orthorhombic
+   - Volume: 260.418 Å³
+   - Density: 4.074 g/cm³
+   - Coordination Environments: O2--Ti4+, Ti4+-O2-
+   - Bond Lengths: Range from 1.77 Å to 2.00 Å
 
-These materials exhibit a range of elastic properties and can be further analyzed for specific applications requiring materials with these characteristics.
+These findings provide valuable insights into the bonding properties, coordination environments, and crystal structures of TiO2 across different material IDs. If you need more specific details or further analysis, feel free to ask!
 
 > Finished chain.
  ```  
