@@ -119,6 +119,12 @@ class MaterialExtractionAgent:
             AIMessage(content=agent_output),
         ])
 
+    def get_tools(self):
+        return self.tools
+
+    def get_tools_info(self):
+        return {tool.__class__.__name__: tool.__doc__ for tool in self.tools}
+
     def invoke(self, user_input):
         result = self.agent_executor.invoke({
             "input": user_input,
