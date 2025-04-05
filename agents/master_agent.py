@@ -36,6 +36,9 @@ class MatSciAgent:
         self.selection_prompt = ChatPromptTemplate.from_messages([
             ("system", """
              You are an AI assistant that selects the correct specialized agent based on user input and available tools.
+             In general for retrieval of specific materials or properties use MaterialExtractionAgent, for continuum
+             simulations use ContinuumSimulationAgent for generating .cif files (crystal structures) use CrystalGenerationAgent
+             and for molecular dynamic simulations use MolecularDynamicsAgent.
              If the appropriate agent exists, at end of your response, you MUST include the name of the specific AGENT to be used,
              not just the tools, along with reason for selection.
              If an appropriate agent is not available, suggest alternative methods or resources.
@@ -72,32 +75,6 @@ class MatSciAgent:
                 return self.agents[agent_name]
         return None
 
-    def _build_agent_executor(self, selected_agent):
-        """Constructs the agent toolchain and executor for the selected agent."""
-        tools = selected_agent.get_tools()
-        agent_prompt = selected_agent.prompt  # Assuming each agent object has a `.prompt`
-
-        llm_with_tools = self.llm.bind_tools(tools)
-
-        self.agent = (
-            {
-                "input": lambda x: x["input"],
-                "agent_scratchpad": lambda x: format_to_openai_tool_messages(
-                    x["intermediate_steps"]
-                ),
-                "chat_history": lambda x: x["chat_history"],
-            }
-            | agent_prompt
-            | llm_with_tools
-            | OpenAIToolsAgentOutputParser()
-        )
-
-        self.agent_executor = AgentExecutor(
-            agent=self.agent,
-            tools=tools,
-            verbose=self.verbose
-        )
-
     def _update_chat_history(self, user_input, agent_output):
         self.chat_history.extend([
             HumanMessage(content=user_input),
@@ -109,20 +86,18 @@ class MatSciAgent:
         selected_agent = self._select_agent(user_input)
 
         if selected_agent:
-            self._build_agent_executor(selected_agent)
             inputs = {
                 "input": user_input,
                 "chat_history": self.chat_history,
             }
+            response = selected_agent.invoke(inputs)
 
-            response = self.agent_executor.invoke(inputs)
+            # if isinstance(response, dict):
+            #     output_text = response.get("output", "")
+            # else:
+            #     output_text = str(response)
 
-            if isinstance(response, dict):
-                output_text = response.get("output", "")
-            else:
-                output_text = str(response)
-
-            self._update_chat_history(user_input, output_text)
+            self._update_chat_history(user_input, response)
             return response
         else:
             fallback = "I couldn't determine the correct agent for this request."

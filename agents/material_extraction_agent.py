@@ -130,5 +130,5 @@ class MaterialExtractionAgent:
             "input": user_input,
             "chat_history": self.chat_history
         })
-        self._update_chat_history(user_input, result["output"])
+        # self._update_chat_history(user_input, result["output"])
         return result["output"]
