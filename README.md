@@ -1,4 +1,4 @@
-# Modular Agentic Framework for Materials Science Powered by Large Language Models  
+# Modular Large Language Model Agents for Multi-Task Computational Materials Science  
 
 This research project introduces a multi-agent framework that integrates Large Language Models with specialized computational tools to tackle the challenges of materials analysis, simulation, and design. By combining the natural language reasoning capabilities of LLMs with the precision of domain-specific tools, we aim to show the potential to develop a robust, automated, and adaptable system for materials science workflows.
 
